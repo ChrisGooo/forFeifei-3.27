@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>宫业奇的16个小秘密</title>
+  <link rel="stylesheet" href="animate.css">
+  <style media="screen">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      font-family: Helvetica, Tahoma, Arial, STXihei, “华文细黑”, “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, Heiti, “黑体”, sans-serif;
+      font-size: 16px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container > div {
+      text-align: justify;
+      max-width: 45%;
+    }
+    .container p {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #cacaca;
+    }
+    .footer {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    button {
+      margin-top: 10px;
+      border: 1px solid #cacaca;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+    #lable {
+      color: #898989;
+      font-size: 14px;
+    }
+    #change {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      padding: 8px;
+      background-color: #1A417A;
+      color: #fff;
+      border: none;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+
+      document.addEventListener('touchstart',
+        function (event) {
+          event.preventDefault();
+        }
+      );
+
+      var deviceWidth = document.documentElement.clientWidth + 'px';
+      var deviceHeight = document.documentElement.clientHeight* (1 - 0.1) + 'px';
+
+      var con = document.querySelector('.container');
+      if (con.getElementsByTagName('p').length != 0) {
+        con.removeChild(cen);
+      }
+
+      function addAttribute(ele,attr,value) {
+        ele.style[attr] = value;
+      }
+
+      addAttribute(con,'width',deviceWidth);
+      addAttribute(con,'height',deviceHeight);
+
+      text_arr = [
+        {
+          text: '吃饭的时候想你',
+          market: false
+        },
+        {
+          text: '睡觉的时候梦到你',
+          market: false
+        },
+        {
+          text: '考雅思的时候想你',
+          market: false
+        },
+        {
+          text: '敲键盘的时候想你',
+          market: false
+        },
+        {
+          text: '第一次偷窥你洗澡的时候就忍不住感慨宝宝身材真好',
+          market: false
+        },
+        {
+          text: '看到你在音乐厅的照片的时候，我无比想家',
+          market: false
+        },
+        {
+          text: '今天算了一下，4月份我还要去天津考试，感觉咱们俩在一起的日子已经可以倒数了',
+          market: false
+        },
+        {
+          text: '3.14 3.14 3.14 一定要记住',
+          market: false
+        },
+        {
+          text: '从苏州给你买了礼物，有糖果，很怕放坏了',
+          market: false
+        },
+        {
+          text: '没你都没动力吃饭耶～',
+          market: false
+        },
+        {
+          text: '刚考完试，有点没动力学习呢，然而还是有压力',
+          market: false
+        },
+        {
+          text: '我真是世界上最浪漫的男人（能想到送这种礼物）',
+          market: false
+        },
+        {
+          text: '你在我心里是聪明又可爱的',
+          market: false
+        },
+        {
+          text: '哎你要是能一直陪我就好了',
+          market: false
+        },
+        {
+          text: '（暗中委屈）',
+          market: false
+        },
+        {
+          text: '"Look at the stars, look how they shine for you"',
+          market: false
+        }
+      ];
+
+
+      var r_n = Math.floor(Math.random() * text_arr.length);
+
+      function addRanC(number) {
+        var cen = document.createElement('DIV');
+        var text = document.createTextNode(text_arr[number].text);
+        cen.appendChild(text);
+        if (text_arr[number].market) {
+          var wrap = document.createElement('P');
+          var slo = document.createTextNode(text_arr[number].slogon);
+          wrap.appendChild(slo);
+          cen.appendChild(wrap);
+        }
+        con.appendChild(cen);
+        cen.className += ' animated flipInY';
+      }
+
+      addRanC(r_n);
+
+      var change_btn = document.querySelector('#change');
+      change_btn.addEventListener('touchstart',
+        function () {
+          if (con.getElementsByTagName('div').length != 0) {
+            con.removeChild(con.getElementsByTagName('div')[0]);
+          }
+          do {
+            var n_n = Math.floor(Math.random() * text_arr.length);
+            console.log(n_n);
+          } while (r_n === n_n);
+          r_n = n_n;
+          addRanC(n_n);
+        }
+      );
+    }
+  </script>
+</head>
+<body>
+  <div class="container"></div>
+  <button id="change">换一个</button>
+  <div class="footer">
+    <p id="lable">Design By Y7</p>
+  </div>
+</body>
+</html>
